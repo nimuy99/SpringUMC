@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import umc.spring.study.api.code.BaseCode;
+import umc.spring.study.api.code.status.SuccessStatus;
 
 @Getter
 @AllArgsConstructor
@@ -19,14 +21,14 @@ public class ApiResponse<T> {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private T result;                   // 4.실제로 클라이언트에게 필요한 데이터가 담기는 필드
 
-//    // 성공한 경우 응답 생성
-//    public static <T> ApiResponse<T> onSuccess(T result){
-//        return new ApiResponse<>(true, SuccessStatus._OK.getCode() , SuccessStatus._OK.getMessage(), result);
-//    }
-//
-//    public static <T> ApiResponse<T> of(BaseCode code, T result){
-//        return new ApiResponse<>(true, code.getReasonHttpStatus().getCode() , code.getReasonHttpStatus().getMessage(), result);
-//    }
+    // 성공한 경우 응답 생성
+    public static <T> ApiResponse<T> onSuccess(T result){
+        return new ApiResponse<>(true, SuccessStatus._OK.getCode() , SuccessStatus._OK.getMessage(), result);
+    }
+
+    public static <T> ApiResponse<T> of(BaseCode code, T result){
+        return new ApiResponse<>(true, code.getReasonHttpStatus().getCode() , code.getReasonHttpStatus().getMessage(), result);
+    }
 
 
     // 실패한 경우 응답 생성
