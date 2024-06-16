@@ -2,6 +2,9 @@ package umc.spring.study.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.spring.study.domain.common.BaseEntity;
 import umc.spring.study.domain.enums.Gender;
 import umc.spring.study.domain.enums.SocialType;
@@ -19,6 +22,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@DynamicUpdate
+@DynamicInsert
 public class User extends BaseEntity {
 
     // 유저 id
@@ -43,18 +48,19 @@ public class User extends BaseEntity {
     @Column(nullable = false, length = 40)
     private String specAddress;
 
-    // 유저 휴대폰 번호 (010 4871 3060)
-    @Column(nullable = false, length = 15)
+    // 유저 휴대폰 번호 (010-1111-1111)
+    // @Column(nullable = false, length = 15)
     private String phone_number;
 
     // 유저 생년월일
-    private LocalDate inactiveDate;
+    private LocalDate birthDate;
 
-    // 유저 이메일
-    @Column(nullable = false, length = 50)
+    // 유저 이메일 <- 소셜 로그인 없이 하는 회원가입으로 nullable 생략
+    // @Column(nullable = false, length = 50)
     private String email;
 
     // 유저 포인트
+    @ColumnDefault("0")
     private Integer point;
 
     // 유저 소셜로그인 타입
