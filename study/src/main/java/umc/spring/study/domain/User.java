@@ -48,7 +48,7 @@ public class User extends BaseEntity {
     @Column(nullable = false, length = 40)
     private String specAddress;
 
-    // 유저 휴대폰 번호 (010-1111-1111)
+    // 유저 휴대폰 번호 (010-1111-1111) <- 소셜 로그인 없이 하는 회원가입으로 nullable 생략
     // @Column(nullable = false, length = 15)
     private String phone_number;
 
