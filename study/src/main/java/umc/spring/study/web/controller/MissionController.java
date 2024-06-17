@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import umc.spring.study.api.ApiResponse;
 import umc.spring.study.service.MissionService;
-import umc.spring.study.web.dto.MissionResponse;
+import umc.spring.study.web.dto.MissionResponseDTO;
 
 import java.util.List;
 
@@ -21,14 +21,14 @@ public class MissionController {
     private final MissionService missionService;
 
     @GetMapping
-    public ApiResponse<List<MissionResponse>> getMissionsByStatus(@RequestParam(defaultValue = "challenging") String status) {
+    public ApiResponse<List<MissionResponseDTO>> getMissionsByStatus(@RequestParam(defaultValue = "challenging") String status) {
 
         // 예외처리 - MissionError(BAD_REQUEST)
         if (!status.equals("challenging") && !status.equals("completed")) {
             throw new IllegalArgumentException(status + " 이라는 status는 정의되지 않음");
         }
 
-        List<MissionResponse> missions = missionService.getMissionsByStatus(status);
+        List<MissionResponseDTO> missions = missionService.getMissionsByStatus(status);
         return ApiResponse.onSuccess(missions);
     }
 
