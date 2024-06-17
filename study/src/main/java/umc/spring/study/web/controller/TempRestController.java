@@ -13,7 +13,7 @@ import umc.spring.study.web.dto.TempResponseDTO;
 @RestController
 @RequestMapping("/temp")
 @RequiredArgsConstructor
-public class TempController {
+public class TempRestController {
 
     private final TempQueryService tempQueryService;
 

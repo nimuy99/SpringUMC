@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/missions")
 @RequiredArgsConstructor
-public class MissionController {
+public class MissionRestController {
 
     // 1. 미션 상태에 따른 미션 목록 조회 api
     private final MissionService missionService;
