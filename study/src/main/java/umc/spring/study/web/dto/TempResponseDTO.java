@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 // TempAPI로써 RequestBody에 담겨오는 값은 없으므로, TempResponse만 작성
-public class TempResponse {
+public class TempResponseDTO {
 
     @Builder
     @Getter

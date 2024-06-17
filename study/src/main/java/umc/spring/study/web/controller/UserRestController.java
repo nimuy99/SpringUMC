@@ -16,12 +16,13 @@ import umc.spring.study.web.dto.UserResponseDTO;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/users")
-public class UserController {
+public class UserRestController {
 
     private final UserCommandService userCommandService;
 
     @PostMapping("/")
-    public ApiResponse<UserResponseDTO.JoinResultDTO> join(@RequestBody @Valid UserRequestDTO.JoinDto request){
+    public ApiResponse<UserResponseDTO.JoinResultDTO> join(
+            @RequestBody @Valid UserRequestDTO.JoinDto request){
         User user = userCommandService.joinUser(request);
         return ApiResponse.onSuccess(UserConverter.toJoinResultDTO(user));
     }
